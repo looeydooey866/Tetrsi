@@ -1,0 +1,29 @@
+<component name="ArtifactManager">
+  <artifact type="jpackage" name="Tetrsi">
+    <output-path>$PROJECT_DIR$/out/artifacts/Tetrsi</output-path>
+    <properties id="jpackage-properties">
+      <options>
+        <option name="version" value="" />
+        <option name="copyright" value="" />
+        <option name="description" value="" />
+        <option name="vendor" value="" />
+        <option name="mainClass" value="com.example.tetrsi.Launcher" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="Tetrsi.jar">
+        <element id="module-output" name="Tetrsi" />
+      </element>
+      <element id="artifact" artifact-name="Tetrsi:jar" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:mac-aarch64:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:mac-aarch64:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:mac-aarch64:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:mac-aarch64:17.0.6" />
+      <element id="library" level="project" name="yaml.snakeyaml" />
+    </root>
+  </artifact>
+</component>

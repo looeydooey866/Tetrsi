@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tetrsi.Controller.ConfigController">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="55.0" layoutY="31.0" prefHeight="100.0" prefWidth="348.0">
+         <children>
+            <ImageView fitHeight="77.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../images/settingsgear.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Config">
+               <font>
+                  <Font name="System" size="58.0" />
+               </font>
+            </Text>
+            <Circle fx:id="unsaved_circle" fill="#50abff" radius="13.0" stroke="WHITE" strokeType="INSIDE" visible="false">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Circle>
+         </children>
+      </HBox>
+      <Button fx:id="exit" layoutX="59.0" layoutY="698.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="66.0" prefWidth="164.0" text="Exit">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="save" disable="true" layoutX="967.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#saveConfig" prefHeight="66.0" prefWidth="164.0" text="Save">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="navright" layoutX="1001.0" layoutY="705.0" mnemonicParsing="false" onMouseClicked="#navigateRight" prefHeight="59.0" prefWidth="172.0">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="navleft" layoutX="790.0" layoutY="701.0" mnemonicParsing="false" onMouseClicked="#navigateLeft" prefHeight="59.0" prefWidth="172.0">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Group fx:id="handling">
+         <children>
+            <TextArea editable="false" layoutX="293.0" layoutY="167.0" prefHeight="436.0" prefWidth="610.0" />
+            <Text layoutX="450.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handling">
+               <font>
+                  <Font name="System" size="58.0" />
+               </font>
+            </Text>
+            <VBox layoutX="359.0" layoutY="277.0" prefHeight="295.0" prefWidth="482.0" spacing="20.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="69.0" prefWidth="482.0" spacing="20.0">
+                     <children>
+                        <Text fill="#1ae0ff" strokeType="OUTSIDE" strokeWidth="0.0" text="DAS">
+                           <font>
+                              <Font name="System" size="45.0" />
+                           </font>
+                        </Text>
+                        <Slider fx:id="das_slider" blockIncrement="0.1" max="10.0" onMouseClicked="#handleDasChange" onMouseDragged="#handleDasChange" prefHeight="44.0" prefWidth="287.0" value="5.6" />
+                        <TextField fx:id="das_value" alignment="CENTER" onKeyTyped="#handleDasText" prefHeight="48.0" prefWidth="94.0" text="5.6">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="69.0" prefWidth="482.0" spacing="20.0">
+                     <children>
+                        <Text fill="#ff5b5b" strokeType="OUTSIDE" strokeWidth="0.0" text="ARR">
+                           <font>
+                              <Font name="System" size="45.0" />
+                           </font>
+                        </Text>
+                        <Slider fx:id="arr_slider" blockIncrement="0.1" max="10.0" onMouseClicked="#handleArrChange" onMouseDragged="#handleArrChange" prefHeight="44.0" prefWidth="287.0" />
+                        <TextField fx:id="arr_value" alignment="CENTER" onKeyTyped="#handleArrText" prefHeight="48.0" prefWidth="94.0" text="0">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="69.0" prefWidth="482.0" spacing="20.0">
+                     <children>
+                        <Text fill="#22dd3e" strokeType="OUTSIDE" strokeWidth="0.0" text="SDF">
+                           <font>
+                              <Font name="System" size="45.0" />
+                           </font>
+                        </Text>
+                        <Slider fx:id="sdf_slider" blockIncrement="1.0" max="50.0" onMouseClicked="#handleSdfChange" onMouseDragged="#handleSdfChange" prefHeight="44.0" prefWidth="287.0" />
+                        <TextField fx:id="sdf_value" alignment="CENTER" onKeyTyped="#handleSdfText" prefHeight="48.0" prefWidth="94.0" text="inf">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="69.0" prefWidth="482.0" spacing="20.0">
+                     <children>
+                        <Text fill="#ffe300" strokeType="OUTSIDE" strokeWidth="0.0" text="DLY">
+                           <font>
+                              <Font name="System" size="45.0" />
+                           </font>
+                        </Text>
+                        <Slider fx:id="dly_slider" blockIncrement="1.0" max="30.0" onMouseClicked="#handleDlyChange" onMouseDragged="#handleDlyChange" prefHeight="44.0" prefWidth="287.0" value="10.0" />
+                        <TextField fx:id="dly_value" alignment="CENTER" onKeyTyped="#handleDlyText" prefHeight="48.0" prefWidth="94.0" text="10">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Group>
+      <Group fx:id="controls" translateX="1000.0">
+         <children>
+            <TextArea editable="false" layoutX="276.0" layoutY="158.0" prefHeight="507.0" prefWidth="692.0" />
+            <Text layoutX="465.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controls">
+               <font>
+                  <Font name="System" size="58.0" />
+               </font>
+            </Text>
+            <GridPane layoutX="344.0" layoutY="274.0" prefHeight="371.0" prefWidth="585.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.26202392578125" minWidth="10.0" prefWidth="317.93280029296875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.26104736328125" minWidth="0.48089599609375" prefWidth="1.77789306640625" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="475.8160400390625" minWidth="10.0" prefWidth="291.72210693359375" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left" wrappingWidth="62.902130126953125">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="-86.3272705078125" endY="0.03650367259979248" startX="-155.6082000732422" startY="0.0355415940284729" />
+                        <Button fx:id="c_left" mnemonicParsing="false" onMouseClicked="#handleLeft" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="1">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Right" wrappingWidth="100.54000854492188">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="-68.511962890625" endY="0.5000015497207642" startX="-100.0" startY="0.5000015497207642" />
+                        <Button fx:id="c_right" mnemonicParsing="false" onMouseClicked="#handleRight" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="2">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CW" wrappingWidth="47.0179443359375">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="-15.707107543945312" endY="-0.20710676908493042" startX="-100.0" />
+                        <Button fx:id="c_cw" mnemonicParsing="false" onMouseClicked="#handleCW" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="3">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CCW" wrappingWidth="68.62612915039062">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="-37.20710754394531" endY="-0.20710676908493042" startX="-100.0" />
+                        <Button fx:id="c_ccw" mnemonicParsing="false" onMouseClicked="#handleCCW" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="4">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="180" wrappingWidth="53.62615966796875">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="-20.900405883789062" endY="0.0356941819190979" startX="-100.0" />
+                        <Button fx:id="c_180" mnemonicParsing="false" onMouseClicked="#handle180" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="2">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SD" wrappingWidth="37.10992431640625">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="3.5708465576171875" endY="-0.20787441730499268" startX="-100.0" />
+                        <Button fx:id="c_sd" mnemonicParsing="false" onMouseClicked="#handleSD" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HD" wrappingWidth="37.1099853515625">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="2.5993499755859375" endY="-0.5008143186569214" startX="-100.0" />
+                        <Button fx:id="c_hd" mnemonicParsing="false" onMouseClicked="#handleHD" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hold" wrappingWidth="67.22772216796875">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="-28.372207641601562" endY="-0.4995046854019165" startX="-100.0" />
+                        <Button fx:id="c_hold" mnemonicParsing="false" onMouseClicked="#handleHold" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reset" wrappingWidth="84.71539306640625">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="-44.90065002441406" endY="-0.6720277070999146" startX="-100.0" startY="-0.17147517204284668" />
+                        <Button fx:id="c_reset" mnemonicParsing="false" onMouseClicked="#handleReset" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Exit" wrappingWidth="69.1707763671875">
+                           <font>
+                              <Font name="System" size="25.0" />
+                           </font>
+                        </Text>
+                        <Line endX="-28.429153442382812" endY="-0.5004216432571411" startX="-100.0" />
+                        <Button fx:id="c_exit" mnemonicParsing="false" onMouseClicked="#handleExit" prefHeight="39.0" prefWidth="87.0" text="Button">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </Group>
+      <Group fx:id="account" translateX="2000.0">
+         <children>
+            <TextArea editable="false" layoutX="296.0" layoutY="181.0" prefHeight="431.0" prefWidth="609.0" />
+            <Text layoutX="460.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account">
+               <font>
+                  <Font name="System" size="58.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+   </children>
+</Pane>
