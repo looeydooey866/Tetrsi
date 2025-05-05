@@ -30,12 +30,17 @@ public class Application extends javafx.application.Application {
     }
 
     public static void changeScreen(Stage stage, String filename) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource(filename));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/".concat(filename)));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
-        stage.getIcons().add(new Image(Objects.requireNonNull(Application.class.getResourceAsStream("images/communisttetris.png"))));
+        stage.getIcons().add(getImage("communisttetris.png"));
         stage.setScene(scene);
         stage.setTitle("Tetrsi");
         stage.show();
+    }
+
+    public static Image getImage(String filename){
+        System.err.println("images/".concat(filename));
+        return new Image(Objects.requireNonNull(Application.class.getResourceAsStream("images/".concat(filename))));
     }
 
     public static void main(String[] args) {

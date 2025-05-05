@@ -21,11 +21,11 @@ public class GameMenuController {
 
     @FXML
     private void back() throws IOException {
-        Application.changeScreen(stage, "fxml/start-menu.fxml");
+        Application.changeScreen(stage, "start-menu.fxml");
     }
 
     @FXML
     private void normal() throws IOException{
-        Application.changeScreen(stage, "fxml/normal-game.fxml");
+        Application.changeScreen(stage, "normal-game.fxml");
     }
 }

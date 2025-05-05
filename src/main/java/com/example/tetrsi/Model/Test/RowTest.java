@@ -28,6 +28,8 @@ public class RowTest {
         p.doInstructions("dasleft,cw,sd,cw",s.getBoard());
         s.place(p);
         s.print();
+        s.hold(Tetromino.T.getBlock());
+        s.print();
     }
 
     public static void getBoardWithPiece(Board board, Piece piece) {

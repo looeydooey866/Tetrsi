@@ -1,11 +1,16 @@
 package com.example.tetrsi.Model.Definitions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Board {
     private int[][] board;
     private final int height, width;
     private final int numBlocks;
     private final int EMPTY;
     private final int GARBAGE;
+    private int vHeight, vWidth;
+    private Map<Integer, String> colorMap;
 
     public Board(GameRule g){
         this.height = g.getHeight();
@@ -14,7 +19,10 @@ public class Board {
         this.numBlocks = g.getNumBlocks();
         this.EMPTY = numBlocks;
         this.GARBAGE = numBlocks + 1;
+        this.vHeight = g.getVisibleHeight();
+        this.vWidth = g.getVisibleWidth();
         empty();
+        initializeColorMap(g);
     }
 
     public Board(Board other){
@@ -29,6 +37,7 @@ public class Board {
                 board[i][j] = other.board[i][j];
             }
         }
+        this.colorMap = other.colorMap;
     }
 
     public void empty(){
@@ -37,6 +46,19 @@ public class Board {
                 board[i][j] = EMPTY;
             }
         }
+    }
+
+    private void initializeColorMap(GameRule g){
+        this.colorMap = new HashMap<>();
+        for (int i=0;i<numBlocks;i++){
+            colorMap.put(i, g.getBlockList().get(i).getColor());
+        }
+        colorMap.put(EMPTY,"Clear");
+        colorMap.put(GARBAGE,"Garbage");
+    }
+
+    public Map<Integer, String> getColorMap(){
+        return colorMap;
     }
 
     public int[][] getBoard(){
@@ -133,13 +155,26 @@ public class Board {
             for (int j=0;j<width;j++){
                 res.append(get(j, i) != numBlocks ? "[]" : "  ");
             }
+            res.append("|");
             if (i != 0)
-                res.append("|\n");
+                res.append("\n");
         }
         return res.toString();
     }
 
     public Board copy(){
         return new Board(this);
+    }
+
+    public int getVHeight(){
+        return vHeight;
+    }
+
+    public int getVWidth(){
+        return vWidth;
+    }
+
+    public int getNumBlocks(){
+        return numBlocks;
     }
 }

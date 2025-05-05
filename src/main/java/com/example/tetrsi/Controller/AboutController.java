@@ -40,6 +40,6 @@ public class AboutController {
 
     @FXML
     private void exit() throws IOException {
-        Application.changeScreen(stage, "fxml/start-menu.fxml");
+        Application.changeScreen(stage, "start-menu.fxml");
     }
 }

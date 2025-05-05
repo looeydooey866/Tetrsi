@@ -7,7 +7,7 @@ import com.example.tetrsi.Model.Definitions.Tetris.SpinRules.TSpin;
 
 import java.util.List;
 
-//in next time, custom mode, the spawn should be board height + 1
+//next time, custom mode, the spawn should be board height + 1
 public class Tetris implements GameRule {
     private SpinRule spinrule = TSpin.getInstance();
     private AttackTable attacktable = Modern.getInstance();

@@ -12,6 +12,7 @@ public class State {
     private int lastAttackSent;
     private int lastClearLines;
     private Queue queue;
+    private Block hold;
     private GameRule.ClearType lastClear;
     private String lastClearMessage;
 
@@ -44,19 +45,31 @@ public class State {
         lastClearMessage = rule.getClearMessage(p, lastClear, lines);
     }
 
+    public Block hold(Block hold){
+        if (this.hold == null){
+            this.hold = hold;
+            Block temp = queue.getFront();
+            queue.advance();
+            return temp;
+        }
+        else {
+            Block temp = this.hold;
+            this.hold = hold;
+            return temp;
+        }
+    }
+
     public Block getNext(){
         Block res = queue.getFront();
         queue.advance();
         return res;
     }
 
-    public void hold(){
-        queue.hold();
-    }
-
     public void print(){
+        PrettyPrint formatter = new PrettyPrint(2,0);
         System.out.println(board);
         StringBuilder res = new StringBuilder();
+        res.append(lastClearMessage).append('\n');
         res.append("Queue: ");
         for (int i=0;i<rule.getPreview();i++){
             res.append(queue.getQueue().get(i).getName());
@@ -64,11 +77,16 @@ public class State {
                 res.append(", ");
             }
         }
-        System.out.println("╔                        ╗");
-        System.out.println("  " + lastClearMessage);
-        System.out.println("  " + res);
-        System.out.println("  " + String.format("Hold: %s",(queue.getHold()!=null?queue.getHold().getName():"none")));
-        System.out.println("╚                        ╝");
+        res.append('\n');
+        String hold;
+        if (this.hold != null){
+            hold = this.hold.getName();
+        }
+        else {
+            hold = "None";
+        }
+        res.append(String.format("Hold: %s",hold));
+        System.out.println(formatter.format(res));
     }
 
     public Board getBoard(){ return board; }
@@ -78,7 +96,7 @@ public class State {
     public int getPiecesPlaced(){ return piecesPlaced; }
     public int getAttacksSent(){ return attacksSent ;}
     public List<Block> getQueue(){return queue.getQueue();}
-    public Block getHold(){return queue.getHold();}
+    public Block getHold(){return hold;}
     public int getLastAttack(){return lastAttackSent;}
     public int getLinesCleared(){return lastClearLines;}
     public GameRule.ClearType getLastClear(){return lastClear;}

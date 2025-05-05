@@ -21,22 +21,24 @@ public class MenuController {
         DropShadow ds = new DropShadow();
         ds.setColor(Color.AQUA);
         title.setEffect(ds);
-        Platform.runLater(() -> stage = (Stage) config.getScene().getWindow() );
+        Platform.runLater(() -> {
+            stage = (Stage) config.getScene().getWindow();
+        });
     }
 
     @FXML
     private void openMenu() throws IOException{
-        Application.changeScreen(stage, "fxml/play-menu.fxml");
+        Application.changeScreen(stage, "play-menu.fxml");
     }
 
     @FXML
     private void openConfig() throws IOException {
-        Application.changeScreen(stage, "fxml/config-menu.fxml");
+        Application.changeScreen(stage, "config-menu.fxml");
     }
 
     @FXML
     private void openAbout() throws IOException{
-        Application.changeScreen(stage, "fxml/about-menu.fxml");
+        Application.changeScreen(stage, "about-menu.fxml");
     }
 
 }
